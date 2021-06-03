@@ -52,4 +52,13 @@ planetsRouter.post('/', async (request, response, next) => {
     }
 });
 
+planetsRouter.get('/:id', async (request, response, next) => {
+    try {
+        const planet = await Planet.findById(request.params.id);
+        response.json(planet);
+    } catch (error) {
+        next(error);
+    }
+});
+
 module.exports = planetsRouter;
