@@ -1,0 +1,31 @@
+{
+  "name": "b2wstarwars",
+  "version": "1.0.0",
+  "description": "b2w star wars api",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elaimaz/B2WStarWars.git"
+  },
+  "author": "Wesley de Faria Cazelli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elaimaz/B2WStarWars/issues"
+  },
+  "homepage": "https://github.com/elaimaz/B2WStarWars#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.12",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
