@@ -70,4 +70,13 @@ planetsRouter.delete('/:id', async (request, response, next) => {
     }
 });
 
+planetsRouter.get('/name/:name', async (request, response, next) => {
+    try {
+        const planet = await Planet.findOne({ planetName: request.params.name });
+        response.json(planet);
+    } catch (error) {
+        next(error);
+    }
+});
+
 module.exports = planetsRouter;
