@@ -4,7 +4,8 @@ const uniqueValidator = require('mongoose-unique-validator');
 const planetScheme = new mongoose.Schema({
     planetName: {
         type: String,
-        unique: true
+        unique: true,
+        required: true
     },
     climate: String,
     terrain: String,
