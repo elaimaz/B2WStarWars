@@ -61,4 +61,13 @@ planetsRouter.get('/:id', async (request, response, next) => {
     }
 });
 
+planetsRouter.delete('/:id', async (request, response, next) => {
+    try {
+        await Planet.findByIdAndRemove(request.params.id);
+        response.status(204).end();
+    } catch (error) {
+        next(error);
+    }
+});
+
 module.exports = planetsRouter;
