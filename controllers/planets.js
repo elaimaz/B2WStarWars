@@ -3,8 +3,14 @@ const planetsRouter = require('express').Router();
 const getPlanet = require('../services/planets');
 const Planet = require('../models/planet');
 
-planetsRouter.get('/', (request, response) => {
-    response.json({message: 'sucess'});
+planetsRouter.get('/', async (request, response, next) => {
+    try {
+        const planets = await Planet.find({});
+
+        response.json(planets);
+    } catch (error) {
+        next(error);
+    }
 });
 
 planetsRouter.post('/', async (request, response, next) => {
