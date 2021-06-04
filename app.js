@@ -1,4 +1,5 @@
 const express = require('express');
+require('express-async-errors');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
@@ -12,17 +13,13 @@ const midlleware = require('./utils/middleware');
 logger.info('connecting to', config.MONGODB_URI);
 
 (async () => {
-  try {
-    await mongoose.connect(config.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-      useCreateIndex: true,
-    });
-    logger.info('Connected to MongoDB');
-  } catch (error) {
-    logger.error('Cannot connect to MongoDB', error);
-  }
+  await mongoose.connect(config.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  });
+  logger.info('Connected to MongoDB');
 })();
 
 app.use(cors());
