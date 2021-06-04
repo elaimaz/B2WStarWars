@@ -3,23 +3,23 @@ const mongoose = require('mongoose');
 const getPlanet = require('../services/planets');
 
 describe('Test star wars online api', () => {
-    test('Seach existing planet name', async () => {
-        const response = await getPlanet('Tatooine');
-        
-        const results = response.results.length;
+  test('Seach existing planet name', async () => {
+    const response = await getPlanet('Tatooine');
 
-        expect(results).toBeGreaterThanOrEqual(1);
-    });
+    const results = response.results.length;
 
-    test('Search for non existing planet name', async () => {
-        const response = await getPlanet('Arda');
+    expect(results).toBeGreaterThanOrEqual(1);
+  });
 
-        const results = response.results.length;
+  test('Search for non existing planet name', async () => {
+    const response = await getPlanet('Arda');
 
-        expect(results).toBe(0);
-    });
-})
+    const results = response.results.length;
+
+    expect(results).toBe(0);
+  });
+});
 
 afterAll(() => {
-    mongoose.connection.close();
+  mongoose.connection.close();
 });

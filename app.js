@@ -11,13 +11,18 @@ const midlleware = require('./utils/middleware');
 
 logger.info('connecting to', config.MONGODB_URI);
 
-( async () => {
-    try {
-        await mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
-        logger.info('Connected to MongoDB');
-    } catch (error) {
-        logger.error('Cannot connect to MongoDB', error);
-    }
+(async () => {
+  try {
+    await mongoose.connect(config.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+      useCreateIndex: true,
+    });
+    logger.info('Connected to MongoDB');
+  } catch (error) {
+    logger.error('Cannot connect to MongoDB', error);
+  }
 })();
 
 app.use(cors());
