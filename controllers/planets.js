@@ -6,7 +6,6 @@ const Planet = require('../models/planet');
 planetsRouter.get('/', async (request, response, next) => {
     try {
         const planets = await Planet.find({});
-
         response.json(planets);
     } catch (error) {
         next(error);
@@ -55,7 +54,11 @@ planetsRouter.post('/', async (request, response, next) => {
 planetsRouter.get('/:id', async (request, response, next) => {
     try {
         const planet = await Planet.findById(request.params.id);
-        response.json(planet);
+        if (planet) {
+            response.json(planet);
+        } else {
+            response.status(404);
+        }
     } catch (error) {
         next(error);
     }
@@ -73,7 +76,11 @@ planetsRouter.delete('/:id', async (request, response, next) => {
 planetsRouter.get('/name/:name', async (request, response, next) => {
     try {
         const planet = await Planet.findOne({ planetName: request.params.name });
-        response.json(planet);
+        if(planet) {
+            response.json(planet);
+        } else {
+            response.status(404).end();
+        }
     } catch (error) {
         next(error);
     }

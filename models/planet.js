@@ -14,7 +14,7 @@ const planetScheme = new mongoose.Schema({
 
 planetScheme.plugin(uniqueValidator);
 
-planetScheme.set('toJson', {
+planetScheme.set('toJSON', {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id.toString();
         delete returnedObject._id;
